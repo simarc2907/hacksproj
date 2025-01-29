@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BuildAid - Empowering Construction Workers</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+  <!-- Auth Container -->
+  <div id="authContainer" class="auth-container">
+    <div class="auth-box">
+      <div class="auth-logo">
+        <i data-lucide="hard-hat" class="logo-icon"></i>
+        <h1>BuildAid</h1>
+      </div>
+      <div class="auth-tabs">
+        <button class="auth-tab active" data-form="login">Login</button>
+        <button class="auth-tab" data-form="register">Register</button>
+      </div>
+
+      <!-- Login Form -->
+      <form id="loginForm" class="auth-form">
+        <div class="form-group">
+          <i data-lucide="mail"></i>
+          <input type="email" placeholder="Email" required>
+        </div>
+        <div class="form-group">
+          <i data-lucide="lock"></i>
+          <input type="password" placeholder="Password" required>
+        </div>
+        <button type="submit" class="btn-primary">Sign In</button>
+      </form>
+
+      <!-- Register Form -->
+      <form id="registerForm" class="auth-form hidden">
+        <div class="form-group">
+          <i data-lucide="user"></i>
+          <input type="text" placeholder="Full Name" required>
+        </div>
+        <div class="form-group">
+          <i data-lucide="mail"></i>
+          <input type="email" placeholder="Email" required>
+        </div>
+        <div class="form-group">
+          <i data-lucide="phone"></i>
+          <input type="tel" placeholder="Phone Number" required>
+        </div>
+        <div class="form-group">
+          <i data-lucide="briefcase"></i>
+          <select id="roleSelect" required>
+            <option value="">Select Role</option>
+            <option value="worker">Construction Worker</option>
+            <option value="employer">Employer/Contractor</option>
+            <option value="ngo">NGO Representative</option>
+          </select>
+        </div>
+        <div id="workerSkills" class="form-group hidden">
+          <i data-lucide="tool"></i>
+          <select multiple>
+            <option value="masonry">Masonry</option>
+            <option value="carpentry">Carpentry</option>
+            <option value="plumbing">Plumbing</option>
+            <option value="electrical">Electrical</option>
+            <option value="painting">Painting</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <i data-lucide="lock"></i>
+          <input type="password" placeholder="Password" required>
+        </div>
+        <button type="submit" class="btn-primary">Create Account</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Main App Container -->
+  <div id="appContainer" class="app-container hidden">
+    <!-- Navigation -->
+    <nav class="navbar">
+      <div class="nav-brand">
+        <i data-lucide="hard-hat"></i>
+        <span>BuildAid</span>
+      </div>
+      <div class="nav-links">
+        <a href="#" class="nav-link active" data-page="home">
+          <i data-lucide="home"></i>
+          <span>Home</span>
+        </a>
+        <a href="#" class="nav-link" data-page="jobs">
+          <i data-lucide="briefcase"></i>
+          <span>Jobs</span>
+        </a>
+        <a href="#" class="nav-link" data-page="transport">
+          <i data-lucide="map-pin"></i>
+          <span>Transport</span>
+        </a>
+        <a href="#" class="nav-link" data-page="income">
+          <i data-lucide="dollar-sign"></i>
+          <span>Income</span>
+        </a>
+        <a href="#" class="nav-link" data-page="teams">
+          <i data-lucide="users"></i>
+          <span>Teams</span>
+        </a>
+      </div>
+      <button id="logoutBtn" class="btn-logout">
+        <i data-lucide="log-out"></i>
+        <span>Logout</span>
+      </button>
+    </nav>
+
+    <!-- Pages -->
+    <main class="main-content">
+      <!-- Home Page -->
+      <div id="homePage" class="page active">
+        <div class="hero-section">
+          <h1>Welcome to BuildAid</h1>
+          <p>Connecting construction workers with opportunities</p>
+        </div>
+
+        <div class="features-grid">
+          <div class="feature-card">
+            <i data-lucide="briefcase"></i>
+            <h3>Find Jobs</h3>
+            <p>Access instant job openings tailored to your skills and location</p>
+            <a href="#" class="feature-link" data-page="jobs">Browse Jobs</a>
+          </div>
+          
+          <div class="feature-card">
+            <i data-lucide="map-pin"></i>
+            <h3>Transport</h3>
+            <p>Arrange reliable transportation to and from job sites</p>
+            <a href="#" class="feature-link" data-page="transport">Plan Route</a>
+          </div>
+          
+          <div class="feature-card">
+            <i data-lucide="dollar-sign"></i>
+            <h3>Income Tracker</h3>
+            <p>Track earnings and manage payment history securely</p>
+            <a href="#" class="feature-link" data-page="income">View Income</a>
+          </div>
+          
+          <div class="feature-card">
+            <i data-lucide="users"></i>
+            <h3>Team Formation</h3>
+            <p>Form teams and bid on larger construction projects</p>
+            <a href="#" class="feature-link" data-page="teams">Join Teams</a>
+          </div>
+        </div>
+
+        <div class="emergency-fund-section">
+          <div class="emergency-card">
+            <i data-lucide="shield"></i>
+            <h3>Emergency Fund Support</h3>
+            <p>Access emergency funds during accidents or crises</p>
+            <button class="btn-secondary">Learn More</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Jobs Page -->
+      <div id="jobsPage" class="page">
+        <h2>Available Jobs</h2>
+        <div class="jobs-filters">
+          <input type="text" placeholder="Search jobs..." class="search-input">
+          <select class="filter-select">
+            <option value="">All Categories</option>
+            <option value="masonry">Masonry</option>
+            <option value="carpentry">Carpentry</option>
+            <option value="electrical">Electrical</option>
+            <option value="plumbing">Plumbing</option>
+          </select>
+          <select class="filter-select">
+            <option value="">All Locations</option>
+            <option value="north">North</option>
+            <option value="south">South</option>
+            <option value="east">East</option>
+            <option value="west">West</option>
+          </select>
+        </div>
+        <div class="jobs-grid" id="jobsGrid">
+          <!-- Jobs will be populated by JavaScript -->
+        </div>
+      </div>
+
+      <!-- Transport Page -->
+      <div id="transportPage" class="page">
+        <h2>Transport Routes</h2>
+        <div class="transport-container">
+          <div class="transport-form">
+            <div class="form-group">
+              <i data-lucide="map-pin"></i>
+              <input type="text" placeholder="Pick-up Location">
+            </div>
+            <div class="form-group">
+              <i data-lucide="map-pin"></i>
+              <input type="text" placeholder="Drop-off Location">
+            </div>
+            <div class="form-group">
+              <i data-lucide="calendar"></i>
+              <input type="date">
+            </div>
+            <div class="form-group">
+              <i data-lucide="clock"></i>
+              <input type="time">
+            </div>
+            <button class="btn-primary">Find Transport</button>
+          </div>
+          <div class="transport-options" id="transportOptions">
+            <!-- Transport options will be populated by JavaScript -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Income Page -->
+      <div id="incomePage" class="page">
+        <h2>Income Tracker</h2>
+        <div class="income-stats">
+          <div class="stat-card">
+            <h4>This Month</h4>
+            <p class="amount">₹0</p>
+          </div>
+          <div class="stat-card">
+            <h4>Last Month</h4>
+            <p class="amount">₹0</p>
+          </div>
+          <div class="stat-card">
+            <h4>Total Earnings</h4>
+            <p class="amount">₹0</p>
+          </div>
+        </div>
+        <div class="income-history">
+          <h3>Payment History</h3>
+          <table class="income-table">
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Job</th>
+                <th>Employer</th>
+                <th>Amount</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody id="incomeTableBody">
+              <!-- Income history will be populated by JavaScript -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Teams Page -->
+      <div id="teamsPage" class="page">
+        <h2>Team Formation</h2>
+        <div class="teams-container">
+          <div class="teams-list" id="teamsList">
+            <!-- Teams will be populated by JavaScript -->
+          </div>
+          <div class="create-team">
+            <h3>Create New Team</h3>
+            <form id="createTeamForm" class="team-form">
+              <div class="form-group">
+                <i data-lucide="users"></i>
+                <input type="text" placeholder="Team Name" required>
+              </div>
+              <div class="form-group">
+                <i data-lucide="briefcase"></i>
+                <input type="text" placeholder="Project Type" required>
+              </div>
+              <div class="form-group">
+                <i data-lucide="tool"></i>
+                <input type="text" placeholder="Required Skills">
+              </div>
+              <div class="form-group">
+                <i data-lucide="users"></i>
+                <input type="number" placeholder="Team Size" min="2" required>
+              </div>
+              <button type="submit" class="btn-primary">Create Team</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BuildAid - Empowering Construction Workers</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+  <!-- Auth Container -->
+  <div id="authContainer" class="auth-container">
+    <div class="auth-box">
+      <div class="auth-logo">
+        <i data-lucide="hard-hat" class="logo-icon"></i>
+        <h1>BuildAid</h1>
+      </div>
+      <div class="auth-tabs">
+        <button class="auth-tab active" data-form="login">Login</button>
+        <button class="auth-tab" data-form="register">Register</button>
+      </div>
+
+      <!-- Login Form -->
+      <form id="loginForm" class="auth-form">
+        <div class="form-group">
+          <i data-lucide="mail"></i>
+          <input type="email" placeholder="Email" required>
+        </div>
+        <div class="form-group">
+          <i data-lucide="lock"></i>
+          <input type="password" placeholder="Password" required>
+        </div>
+        <button type="submit" class="btn-primary">Sign In</button>
+      </form>
+
+      <!-- Register Form -->
+      <form id="registerForm" class="auth-form hidden">
+        <div class="form-group">
+          <i data-lucide="user"></i>
+          <input type="text" placeholder="Full Name" required>
+        </div>
+        <div class="form-group">
+          <i data-lucide="mail"></i>
+          <input type="email" placeholder="Email" required>
+        </div>
+        <div class="form-group">
+          <i data-lucide="phone"></i>
+          <input type="tel" placeholder="Phone Number" required>
+        </div>
+        <div class="form-group">
+          <i data-lucide="briefcase"></i>
+          <select id="roleSelect" required>
+            <option value="">Select Role</option>
+            <option value="worker">Construction Worker</option>
+            <option value="employer">Employer/Contractor</option>
+            <option value="ngo">NGO Representative</option>
+          </select>
+        </div>
+        <div id="workerSkills" class="form-group hidden">
+          <i data-lucide="tool"></i>
+          <select multiple>
+            <option value="masonry">Masonry</option>
+            <option value="carpentry">Carpentry</option>
+            <option value="plumbing">Plumbing</option>
+            <option value="electrical">Electrical</option>
+            <option value="painting">Painting</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <i data-lucide="lock"></i>
+          <input type="password" placeholder="Password" required>
+        </div>
+        <button type="submit" class="btn-primary">Create Account</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Main App Container -->
+  <div id="appContainer" class="app-container hidden">
+    <!-- Navigation -->
+    <nav class="navbar">
+      <div class="nav-brand">
+        <i data-lucide="hard-hat"></i>
+        <span>BuildAid</span>
+      </div>
+      <div class="nav-links">
+        <a href="#" class="nav-link active" data-page="home">
+          <i data-lucide="home"></i>
+          <span>Home</span>
+        </a>
+        <a href="#" class="nav-link" data-page="jobs">
+          <i data-lucide="briefcase"></i>
+          <span>Jobs</span>
+        </a>
+        <a href="#" class="nav-link" data-page="transport">
+          <i data-lucide="map-pin"></i>
+          <span>Transport</span>
+        </a>
+        <a href="#" class="nav-link" data-page="income">
+          <i data-lucide="dollar-sign"></i>
+          <span>Income</span>
+        </a>
+        <a href="#" class="nav-link" data-page="teams">
+          <i data-lucide="users"></i>
+          <span>Teams</span>
+        </a>
+      </div>
+      <button id="logoutBtn" class="btn-logout">
+        <i data-lucide="log-out"></i>
+        <span>Logout</span>
+      </button>
+    </nav>
+
+    <!-- Pages -->
+    <main class="main-content">
+      <!-- Home Page -->
+      <div id="homePage" class="page active">
+        <div class="hero-section">
+          <h1>Welcome to BuildAid</h1>
+          <p>Connecting construction workers with opportunities</p>
+        </div>
+
+        <div class="features-grid">
+          <div class="feature-card">
+            <i data-lucide="briefcase"></i>
+            <h3>Find Jobs</h3>
+            <p>Access instant job openings tailored to your skills and location</p>
+            <a href="#" class="feature-link" data-page="jobs">Browse Jobs</a>
+          </div>
+          
+          <div class="feature-card">
+            <i data-lucide="map-pin"></i>
+            <h3>Transport</h3>
+            <p>Arrange reliable transportation to and from job sites</p>
+            <a href="#" class="feature-link" data-page="transport">Plan Route</a>
+          </div>
+          
+          <div class="feature-card">
+            <i data-lucide="dollar-sign"></i>
+            <h3>Income Tracker</h3>
+            <p>Track earnings and manage payment history securely</p>
+            <a href="#" class="feature-link" data-page="income">View Income</a>
+          </div>
+          
+          <div class="feature-card">
+            <i data-lucide="users"></i>
+            <h3>Team Formation</h3>
+            <p>Form teams and bid on larger construction projects</p>
+            <a href="#" class="feature-link" data-page="teams">Join Teams</a>
+          </div>
+        </div>
+
+        <div class="emergency-fund-section">
+          <div class="emergency-card">
+            <i data-lucide="shield"></i>
+            <h3>Emergency Fund Support</h3>
+            <p>Access emergency funds during accidents or crises</p>
+            <button class="btn-secondary">Learn More</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Jobs Page -->
+      <div id="jobsPage" class="page">
+        <h2>Available Jobs</h2>
+        <div class="jobs-filters">
+          <input type="text" placeholder="Search jobs..." class="search-input">
+          <select class="filter-select">
+            <option value="">All Categories</option>
+            <option value="masonry">Masonry</option>
+            <option value="carpentry">Carpentry</option>
+            <option value="electrical">Electrical</option>
+            <option value="plumbing">Plumbing</option>
+          </select>
+          <select class="filter-select">
+            <option value="">All Locations</option>
+            <option value="north">North</option>
+            <option value="south">South</option>
+            <option value="east">East</option>
+            <option value="west">West</option>
+          </select>
+        </div>
+        <div class="jobs-grid" id="jobsGrid">
+          <!-- Jobs will be populated by JavaScript -->
+        </div>
+      </div>
+
+      <!-- Transport Page -->
+      <div id="transportPage" class="page">
+        <h2>Transport Routes</h2>
+        <div class="transport-container">
+          <div class="transport-form">
+            <div class="form-group">
+              <i data-lucide="map-pin"></i>
+              <input type="text" placeholder="Pick-up Location">
+            </div>
+            <div class="form-group">
+              <i data-lucide="map-pin"></i>
+              <input type="text" placeholder="Drop-off Location">
+            </div>
+            <div class="form-group">
+              <i data-lucide="calendar"></i>
+              <input type="date">
+            </div>
+            <div class="form-group">
+              <i data-lucide="clock"></i>
+              <input type="time">
+            </div>
+            <button class="btn-primary">Find Transport</button>
+          </div>
+          <div class="transport-options" id="transportOptions">
+            <!-- Transport options will be populated by JavaScript -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Income Page -->
+      <div id="incomePage" class="page">
+        <h2>Income Tracker</h2>
+        <div class="income-stats">
+          <div class="stat-card">
+            <h4>This Month</h4>
+            <p class="amount">₹0</p>
+          </div>
+          <div class="stat-card">
+            <h4>Last Month</h4>
+            <p class="amount">₹0</p>
+          </div>
+          <div class="stat-card">
+            <h4>Total Earnings</h4>
+            <p class="amount">₹0</p>
+          </div>
+        </div>
+        <div class="income-history">
+          <h3>Payment History</h3>
+          <table class="income-table">
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Job</th>
+                <th>Employer</th>
+                <th>Amount</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody id="incomeTableBody">
+              <!-- Income history will be populated by JavaScript -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Teams Page -->
+      <div id="teamsPage" class="page">
+        <h2>Team Formation</h2>
+        <div class="teams-container">
+          <div class="teams-list" id="teamsList">
+            <!-- Teams will be populated by JavaScript -->
+          </div>
+          <div class="create-team">
+            <h3>Create New Team</h3>
+            <form id="createTeamForm" class="team-form">
+              <div class="form-group">
+                <i data-lucide="users"></i>
+                <input type="text" placeholder="Team Name" required>
+              </div>
+              <div class="form-group">
+                <i data-lucide="briefcase"></i>
+                <input type="text" placeholder="Project Type" required>
+              </div>
+              <div class="form-group">
+                <i data-lucide="tool"></i>
+                <input type="text" placeholder="Required Skills">
+              </div>
+              <div class="form-group">
+                <i data-lucide="users"></i>
+                <input type="number" placeholder="Team Size" min="2" required>
+              </div>
+              <button type="submit" class="btn-primary">Create Team</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
