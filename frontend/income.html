@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Income Tracker - BuildAid</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <h1>Income Tracker</h1>
+  <!-- Income Page -->
+  <div id="incomePage" class="page">
+    <h2>Income Tracker</h2>
+    <div class="income-stats">
+      <div class="stat-card">
+        <h4>This Month</h4>
+        <p class="amount">₹0</p>
+      </div>
+      <div class="stat-card">
+        <h4>Last Month</h4>
+        <p class="amount">₹0</p>
+      </div>
+      <div class="stat-card">
+        <h4>Total Earnings</h4>
+        <p class="amount">₹0</p>
+      </div>
+    </div>
+    <div class="income-history">
+      <h3>Payment History</h3>
+      <table class="income-table">
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Job</th>
+            <th>Employer</th>
+            <th>Amount</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody id="incomeTableBody">
+          <!-- Income history will be populated by JavaScript -->
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Transport - BuildAid</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <h1>Transport Routes</h1>
+  <!-- Transport Page -->
+  <div id="transportPage" class="page">
+    <h2>Transport Routes</h2>
+    <div class="transport-container">
+      <div class="transport-form">
+        <div class="form-group">
+          <i data-lucide="map-pin"></i>
+          <input type="text" placeholder="Pick-up Location">
+        </div>
+        <div class="form-group">
+          <i data-lucide="map-pin"></i>
+          <input type="text" placeholder="Drop-off Location">
+        </div>
+        <div class="form-group">
+          <i data-lucide="calendar"></i>
+          <input type="date">
+        </div>
+        <div class="form-group">
+          <i data-lucide="clock"></i>
+          <input type="time">
+        </div>
+        <button class="btn-primary">Find Transport</button>
+      </div>
+      <div class="transport-options" id="transportOptions">
+        <!-- Transport options will be populated by JavaScript -->
+      </div>
+    </div>
+  </div>
+</body>
+</html>
